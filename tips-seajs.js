@@ -1,3 +1,5 @@
+define(function(require, exports, moudles) {     
+	return function(jquery) {
 		(function($) {
 			$.extend({
 
@@ -7,7 +9,7 @@
 
 					func.showOverlay(0);
 
-					var tips = $('<p style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;">' + info + '</p>').appendTo('body');
+					var tips = $('<p style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height+ 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:'+ opts.height+'px;">' + info + '</p>').appendTo('body');
 
 					func.centershow(tips);
 
@@ -54,3 +56,5 @@
 				}
 			}
 		})(jQuery);
+	}
+})
