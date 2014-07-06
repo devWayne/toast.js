@@ -1,7 +1,7 @@
 		(function($) {
 			$.extend({
 
-				showTips: function(info, options) {
+				toast: function(info, options) {
 
 					var opts = $.extend({}, $.showTips.defaults, options);
 
@@ -18,7 +18,7 @@
 				}
 			});
 
-			$.showTips.defaults = {
+			$.toast.defaults = {
 				time: 2000,
 				width: 300,
 				height: 100,

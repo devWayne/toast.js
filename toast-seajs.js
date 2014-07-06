@@ -3,7 +3,7 @@ define(function(require, exports, moudles) {     
 		(function($) {
 			$.extend({
 
-				showTips: function(info, options) {
+				toast: function(info, options) {
 
 					var opts = $.extend({}, $.showTips.defaults, options);
 
@@ -20,7 +20,7 @@ define(function(require, exports, moudles) {     
 				}
 			});
 
-			$.showTips.defaults = {
+			$.toast.defaults = {
 				time: 2000,
 				width: 300,
 				height: 100,

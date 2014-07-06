@@ -1,22 +1,26 @@
-tipsjs
+toastjs
 ======
 
-a jquery plugin helps to make tips
+a jquery plugin helps to make toast
 
 ###Quick Use
 
-$.showTips("What you want show")
+$.toast("What you want show")
 
 ###Config
 
-$.showTips.defaults={
-        time: 2000,
-				width: 300,
-				font_size: 14
+$.toast.defaults={
+        time:2000,
+		width:300,
+		height:100,
+		font_size: 14
 				}
 
-$.showTips("What you want show",{
-        time: 2000,
-				width: 300,
-				font_size: 14
-				})
+$.toast(
+"Your Tips",
+{
+	time:2000,
+	width:300,
+	height:100,
+	font_size: 14
+}); 
