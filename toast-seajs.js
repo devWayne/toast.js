@@ -1,11 +1,11 @@
-define(function(require, exports, moudles) {     
+define(function(require, exports, module) {     
 	return function(jquery) {
 		(function($) {
 			$.extend({
 
 				toast: function(info, options) {
 
-					var opts = $.extend({}, $.showTips.defaults, options);
+					var opts = $.extend({}, $.toast.defaults, options);
 
 					func.showOverlay(0);
 
