@@ -1,5 +1,5 @@
 define(function(require, exports, module) {     
-	return function(jquery) {
+	return function() {
 		(function($) {
 			$.extend({
 
@@ -9,7 +9,7 @@ define(function(require, exports, module) {     
 
 					func.showOverlay(0);
 
-					var tips = $('<p style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height+ 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:'+ opts.height+'px;">' + info + '</p>').appendTo('body');
+					var tips = $('<p style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;">' + info + '</p>').appendTo('body');
 
 					func.centershow(tips);
 
@@ -35,7 +35,7 @@ define(function(require, exports, module) {     
 					if (!clear) {
 						overlay.appendTo($('body')).css({
 							'width': $(window).width(),
-							'height': $('body').height(),
+							'height': $(window).height(),
 							'opacity': 0.5
 						});
 					} else {
@@ -45,8 +45,8 @@ define(function(require, exports, module) {     
 				centershow: function(divName) {
 					var top = ($(window).height() - $(divName).height()) / 2;
 					var left = ($(window).width() - $(divName).width()) / 2;
-					var scrollTop = $(document).scrollTop();
-					var scrollLeft = $(document).scrollLeft();
+					var scrollTop = $(document).scrollTop() || 0;
+					var scrollLeft = $(document).scrollLeft() || 0;
 					$(divName).css({
 						position: 'absolute',
 						'top': top + scrollTop,

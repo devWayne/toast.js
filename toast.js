@@ -3,7 +3,7 @@
 
 				toast: function(info, options) {
 
-					var opts = $.extend({}, $.showTips.defaults, options);
+					var opts = $.extend({}, $.toast.defaults, options);
 
 					func.showOverlay(0);
 
@@ -33,7 +33,7 @@
 					if (!clear) {
 						overlay.appendTo($('body')).css({
 							'width': $(window).width(),
-							'height': $('body').height(),
+							'height': $(window).height(),
 							'opacity': 0.5
 						});
 					} else {
@@ -43,8 +43,8 @@
 				centershow: function(divName) {
 					var top = ($(window).height() - $(divName).height()) / 2;
 					var left = ($(window).width() - $(divName).width()) / 2;
-					var scrollTop = $(document).scrollTop();
-					var scrollLeft = $(document).scrollLeft();
+					var scrollTop = $(document).scrollTop() || 0;
+					var scrollLeft = $(document).scrollLeft() || 0;
 					$(divName).css({
 						position: 'absolute',
 						'top': top + scrollTop,
