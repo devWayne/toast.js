@@ -1,7 +1,6 @@
 		(function($) {
-			$.extend({
 
-				toast: function(info, options) {
+			$.toast= function(info, options) {
 
 					var opts = $.extend({}, $.toast.defaults, options);
 
@@ -16,12 +15,12 @@
 						func.showOverlay(1);
 					}, opts.time);
 				}
-			});
+			
 
 			$.toast.defaults = {
 				time: 2000,
-				width: 300,
-				height: 100,
+				width: 'auto',
+				height: 'auto',
 				font_size: 14
 			};
 
