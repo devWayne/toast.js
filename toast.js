@@ -87,13 +87,13 @@
                 pageHeight = windowHeight;
             } else {
                 pageHeight = yScroll;
-            h total width less then width of the viewport    
+            }
             if (xScroll < windowWidth) {
                 pageWidth = xScroll;
             } else {
                 pageWidth = windowWidth;
             }
-            arrayPageSize = new Array(pageHeight, pageWidth, windowWidth, windowHeight);
+            arrayPageSize = new Array(pageHeight, pageWidth,windowWidth, windowHeight);
             return arrayPageSize;
         }
 

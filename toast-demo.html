@@ -1,62 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>TipsJs</title>
-		<style>
-		.btn{
-			height:30px;
-		}
-		</style>
-	</head>
-	<body>
-		<div>
-			<blockquote>
-				<h1>SHOWTIPS</h1>
-				<p><button id="demo" class="btn">点击查看效果</button></p>
-			</blockquote>
-			
-		</div>
-		<div>
 
-			<blockquote>
-				<h2>使用说明</h2>
-        <pre>
-//快速使用
-$.toast("Your Tips");
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TipsJs</title>
+    <style>
+        .btn {
+            height: 30px;
+        }
+    </style>
+</head>
 
-/*
-详细配置
-可选择传入toast消失的时间，toast的宽度和文字的大小
-*/
-$.toast(
-"Your Tips",
-{
-	time:2000,
-	width:300,
-	height:100,
-	font_size: 14
-}); 
+<body>
+    <div>
+        <blockquote>
+            <h1>SHOWTIPS</h1>
+            <p>
+                <button id="demo" class="btn">点击查看效果</button>
+            </p>
+        </blockquote>
 
-//修改默认配置
+    </div>
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="toast.js"></script>
+    <script>
+        $(function() {
+            $("#demo").on("click", function(e) {
+                e.preventDefault();
+                $.toast("Here is a Demo");
+            });
+        })
+    </script>
+</body>
 
-$.toast.defaults={
-        time:2000,
-		width:300,
-		height:100,
-		font_size: 14
-}
-		</pre>
-			</blockquote>
-		</div>
-		<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
-		<script src="tips.js"></script>
-		<script>
-		$("#demo").on("click",function(e){
-		e.preventDefault();
-		$.showTips("Here is a Demo");
-		});
-		</script>
-	</body>
 </html>
