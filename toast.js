@@ -1,4 +1,15 @@
-(function($) {
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['$'], factory);
+    } else if (typeof exports === 'object') {
+        // CommonJS
+        factory(require('$'));
+    } else {
+        // Browser globals
+        factory($);
+    }
+}(function($) {
 
     $.toast = function(info, options) {
 
@@ -6,16 +17,15 @@
 
         func.showOverlay(0);
 
-        var tips = $('<p style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;">' + info + '</p>').appendTo('body');
+        var tips = $('<p id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;">' + info + '</p>').appendTo('body');
 
         func.centershow(tips);
 
         setTimeout(function() {
-            tips.remove();
             func.showOverlay(1);
+	    tips.remove();
         }, opts.time);
     }
-
 
     $.toast.defaults = {
         time: 2000,
@@ -27,7 +37,7 @@
 
     var func = {
         showOverlay: function(clear, opts) {
-            var overlay = $('<div id="J_overlay" style="position:absolute;left:0;top:0;background:#000;_filter:alpha(opacity=50);z-index:999;"></div>');
+            var overlay = $('<div id="J_overlay" style="position:absolute;left:0;top:0;background:#000;_filter:alpha(opacity=50);z-index:999"></div>');
 
             if (!clear) {
                 overlay.appendTo($('body')).css({
@@ -35,9 +45,11 @@
                     'height': func.getPageSize()[0],
                     'opacity': 0.5
                 });
+
             } else {
                 $('#J_overlay').remove();
             }
+
         },
         centershow: function(divName) {
             var top = ($(window).height() - $(divName).height()) / 2;
@@ -93,9 +105,9 @@
             } else {
                 pageWidth = windowWidth;
             }
-            arrayPageSize = new Array(pageHeight, pageWidth,windowWidth, windowHeight);
+            arrayPageSize = new Array(pageHeight, pageWidth, windowWidth, windowHeight);
             return arrayPageSize;
         }
 
     }
-})($);
+}));

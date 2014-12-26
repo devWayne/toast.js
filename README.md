@@ -1,7 +1,7 @@
 toastjs
 ======
 
-//快速使用
+//快速使用   
 $.toast("Your Tips");
 
 /*
