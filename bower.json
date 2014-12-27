@@ -1,0 +1,22 @@
+{
+  "name": "toastjs",
+  "version": "1.0.0",
+  "homepage": "https://github.com/devWayne/toastjs",
+  "authors": [
+    "Wayne <dev.wayne.ix@gmail.com>"
+  ],
+  "description": "toast",
+  "main": "toast.js",
+  "keywords": [
+    "toast",
+    "overlay"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
