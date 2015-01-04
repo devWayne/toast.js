@@ -23,8 +23,17 @@
 
         setTimeout(function() {
             func.showOverlay(1);
-	    tips.remove();
+            tips.remove();
         }, opts.time);
+    }
+    $.toast.centershow = function(div) {
+        func.centershow($(div));
+        func.showOverlay(0);
+        $(window).on('click', '.j-back', function(e) {
+            e.preventDefault();
+            func.showOverlay(1);
+            $(div).css('visibility', 'hidden');
+        })
     }
 
     $.toast.defaults = {
@@ -57,9 +66,10 @@
             var scrollTop = $(document).scrollTop() || 0;
             var scrollLeft = $(document).scrollLeft() || 0;
             $(divName).css({
-                position: 'absolute',
+                'position': 'absolute',
                 'top': top + scrollTop,
-                'left': left + scrollLeft
+                'left': left + scrollLeft,
+		'visibility':'visible'
             }).show();
         },
         getPageSize: function() {
