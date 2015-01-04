@@ -4,10 +4,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TipsJs</title>
+    <title>ToastJs</title>
     <style>
         .btn {
             height: 30px;
+        }
+        .popbox {
+            visibility: hidden;
+            display: block;
+            z-index: 9999;
+            background-color: white;
+            border-radius: 5px;
+            width: 250px;
+        }
+        .popbox .title {
+            font-weight: bolder;
+            padding-top: 15px;
+            text-align: center;
+        }
+        .popbox .content {
+            text-indent: 20px;
+            padding: 10px 15px;
+        }
+        .popbox .btn {
+            border-top: 1px solid #bbb;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            color: #119DFA;
+        }
+        .popbox .j-back {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            width: 50%;
+            float: left;
+            border-right: 1px solid #bbb;
         }
     </style>
 </head>
@@ -17,8 +49,17 @@
         <blockquote>
             <h1>SHOWTIPS</h1>
             <p>
-                <button id="demo" class="btn">点击查看效果</button>
+                <button id="demo1" class="btn">点击查看Toast效果</button>
+		 <button id="demo2" class="btn">点击查看弹窗效果</button>
             </p>
+            <div class="popbox">
+                <p class="title">领取成功</p>
+                <p class="content">你可以在大众点评“我的钱包-抵扣券”中查看.</p>
+                <div class="btn"><span class="j-back">关闭</span><span class="j-href">查看</span>
+                </div>
+            </div>
+           
+
         </blockquote>
 
     </div>
@@ -26,10 +67,15 @@
     <script src="toast.js"></script>
     <script>
         $(function() {
-            $("#demo").on("click", function(e) {
+            $("#demo1").on("click", function(e) {
                 e.preventDefault();
                 $.toast("Here is a Demo");
             });
+
+            $('#demo2').on('click', function(e) {
+                e.preventDefault();
+                $.toast.centershow('.popbox');
+            })
         })
     </script>
 </body>

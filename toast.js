@@ -26,10 +26,11 @@
             tips.remove();
         }, opts.time);
     }
+
     $.toast.centershow = function(div) {
         func.centershow($(div));
         func.showOverlay(0);
-        $(window).on('click', '.j-back', function(e) {
+        $('.j-back').on('click', function(e) {
             e.preventDefault();
             func.showOverlay(1);
             $(div).css('visibility', 'hidden');
@@ -69,7 +70,7 @@
                 'position': 'absolute',
                 'top': top + scrollTop,
                 'left': left + scrollLeft,
-		'visibility':'visible'
+                'visibility': 'visible'
             }).show();
         },
         getPageSize: function() {
