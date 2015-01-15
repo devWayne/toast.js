@@ -1,4 +1,4 @@
-toastjs[![Build Status](https://travis-ci.org/devWayne/toastjs.svg?branch=master)](https://travis-ci.org/devWayne/toastjs)
+toastjs[![Build Status](https://travis-ci.org/devWayne/toast.js.svg?branch=master)](https://travis-ci.org/devWayne/toast.js)
 ============
 > Zepto/jQuery Plugin for toast
 
