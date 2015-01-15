@@ -17,7 +17,13 @@
 
         func.showOverlay(0);
 
-        var tips = $('<p id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;">' + info + '</p>').appendTo('body');
+        if (typeof info == "string") {
+	    _str=info
+            info= {};
+	    info.title=_str;
+            info.content = "";
+        }
+        var tips = $('<div id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;padding:' + opts.padding + 'px"><h3>' + info.title + '</h3><p>' + info.content + '</p></div>').appendTo('body');
 
         func.centershow(tips);
 
@@ -41,7 +47,8 @@
         time: 2000,
         width: 'auto',
         height: 'auto',
-        font_size: 14
+        font_size: 14,
+        padding: 15
     };
 
 

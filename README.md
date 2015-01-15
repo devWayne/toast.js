@@ -1,28 +1,48 @@
-toastjs
-======
+toastjs[![Build Status](https://travis-ci.org/devWayne/toastjs.svg?branch=master)](https://travis-ci.org/devWayne/toastjs)
+============
+> Zepto/jQuery Plugin for toast
 
-//快速使用   
+##Quick use
+
+```javascript  
 $.toast("Your Tips");
+```
+##API
 
-/*
-详细配置
-可选择传入toast消失的时间，toast的宽度和文字的大小
-*/
+###Single Line Toast
+```javascript  
 $.toast(
 "Your Tips",
 {
 	time:2000,
 	width:300,
 	height:100,
+	padding:15,
 	font_size: 14
-}); 
+});
+``` 
 
-//修改默认配置
+###Double Lines Toast
+```javascript  
+$.toast(
+{
+	title:'Title',
+	content:'Here is content'
+});
+```
 
+###Default Config
+```javascript  
 $.toast.defaults={
-        time:2000,
-		width:300,
-		height:100,
-		font_size: 14
+	time:2000,
+	width:300,
+	height:100,
+	padding:15,
+	font_size: 14
 }
+```
 
+###Center Show
+```javascript 
+$.toast.centershow('<p>Centershow Block</p>');
+```
