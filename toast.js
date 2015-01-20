@@ -36,11 +36,6 @@
     $.toast.centershow = function(div) {
         func.centershow($(div));
         func.showOverlay(0);
-        $('.j-back').on('click', function(e) {
-            e.preventDefault();
-            func.showOverlay(1);
-            $(div).css('visibility', 'hidden');
-        })
     }
 
     $.toast.defaults = {
