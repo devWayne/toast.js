@@ -44,5 +44,5 @@ $.toast.defaults={
 
 ###Center Show
 ```javascript 
-$.toast.centershow('<p>Centershow Block</p>');
+$.toast.centershow('.popbox');
 ```
