@@ -18,24 +18,32 @@
         func.showOverlay(0);
 
         if (typeof info == "string") {
-	    _str=info
-            info= {};
-	    info.title=_str;
+            _str = info
+            info = {};
+            info.title = _str;
             info.content = "";
         }
         var tips = $('<div id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;padding:' + opts.padding + 'px"><h3>' + info.title + '</h3><p>' + info.content + '</p></div>').appendTo('body');
 
         func.centershow(tips);
-
-        setTimeout(function() {
-            func.showOverlay(1);
-            tips.remove();
-        }, opts.time);
+        if (opts.time != 0) {
+            setTimeout(function() {
+                func.showOverlay(1);
+                tips.remove();
+            }, opts.time);
+        }
     }
 
     $.toast.centershow = function(div) {
         func.centershow($(div));
         func.showOverlay(0);
+    };
+
+    $.toast.close = function(div) {
+	if(!div)div='#J_content';
+        func.showOverlay(1);
+        $(div).remove();
+
     }
 
     $.toast.defaults = {

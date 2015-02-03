@@ -41,8 +41,16 @@ $.toast.defaults={
 	font_size: 14
 }
 ```
+ - if time=0,the toast will never disappear
 
 ###Center Show
 ```javascript 
 $.toast.centershow('.popbox');
 ```
+###Close Toast
+```javascript 
+$.toast.close();
+```
+
+
+
