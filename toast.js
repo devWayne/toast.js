@@ -29,6 +29,7 @@
 
         },
         centershow: function(divName,container) {
+	    $(container).append(divName);
             var top = ($(window).height() - $(divName).height()) / 2;
             var left = ($(window).width() - $(divName).width()) / 2;
             var scrollTop = $(document).scrollTop() || 0;
@@ -40,7 +41,6 @@
                 'visibility': 'visible'
             });
 
-	    $(container).append(divName);
 
 	    return divName;
         },
