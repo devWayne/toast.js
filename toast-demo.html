@@ -10,8 +10,8 @@
             height: 30px;
         }
         .popbox {
-            visibility: hidden;
-            display: block;
+	    height: 156px;
+	    display: block;
             z-index: 9999;
             background-color: white;
             border-radius: 5px;
@@ -21,6 +21,7 @@
             font-weight: bolder;
             padding-top: 15px;
             text-align: center;
+	    margin: 0;
         }
         .popbox .content {
             text-indent: 20px;
@@ -51,21 +52,20 @@
             <p>
                 <button id="demo1" class="btn">点击查看Toast效果</button>
 		 <button id="demo2" class="btn">点击查看弹窗效果</button>
-            </p>
-            <div class="popbox">
-		    <p class="title">领取成功</p>
-                <p class="content">你可以在大众点评“我的钱包-抵扣券”中查看.</p>
-                <div class="btn"><span class="j-back">关闭</span><span class="j-href">查看</span>
-                </div>
-            </div>
-           
-
+            </p>           
         </blockquote>
 
     </div>
     <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
     <script src="toast.js"></script>
     <script>
+
+    var tpl= '<div class="popbox">' +
+		    '<p class="title">领取成功</p>' +
+                    '<p class="content">你可以在大众点评“我的钱包-抵扣券”中查看.</p>' +
+                '<div class="btn"><span class="j-back">关闭</span><span class="j-href">查看</span></div>' +
+            '</div>';
+
         $(function() {
             $("#demo1").on("click", function(e) {
                 e.preventDefault();
@@ -74,8 +74,18 @@
 
             $('#demo2').on('click', function(e) {
                 e.preventDefault();
-                $.toast.centershow('.popbox');
-            })
+                $.toast.centershow(tpl);
+            });
+	    
+            $(document).on('click', '#J_overlay',function(e) {
+                e.preventDefault();
+                $.toast.close();
+            });
+
+	    $(document).on('click','.j-back',function(e){
+		 $.toast.centershow.close();   
+		    
+	    });
         })
     </script>
 </body>

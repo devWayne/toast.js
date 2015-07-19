@@ -1,4 +1,4 @@
-(function(factory) {
+;(function(factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
         define(['$'], factory);
@@ -11,50 +11,7 @@
     }
 }(function($) {
 
-    $.toast = function(info, options) {
-
-        var opts = $.extend({}, $.toast.defaults, options);
-
-        func.showOverlay(0);
-
-        if (typeof info == "string") {
-            _str = info
-            info = {};
-            info.title = _str;
-            info.content = "";
-        }
-        var tips = $('<div id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;padding:' + opts.padding + 'px"><h3>' + info.title + '</h3><p>' + info.content + '</p></div>').appendTo('body');
-
-        func.centershow(tips);
-        if (opts.time != 0) {
-            setTimeout(function() {
-                func.showOverlay(1);
-                tips.remove();
-            }, opts.time);
-        }
-    }
-
-    $.toast.centershow = function(div) {
-        func.centershow($(div));
-        func.showOverlay(0);
-    };
-
-    $.toast.close = function(div) {
-	if(!div)div='#J_content';
-        func.showOverlay(1);
-        $(div).remove();
-
-    }
-
-    $.toast.defaults = {
-        time: 2000,
-        width: 'auto',
-        height: 'auto',
-        font_size: 14,
-        padding: 15
-    };
-
-
+    //Utils
     var func = {
         showOverlay: function(clear, opts) {
             var overlay = $('<div id="J_overlay" style="position:absolute;left:0;top:0;background:#000;_filter:alpha(opacity=50);z-index:999"></div>');
@@ -71,7 +28,7 @@
             }
 
         },
-        centershow: function(divName) {
+        centershow: function(divName,container) {
             var top = ($(window).height() - $(divName).height()) / 2;
             var left = ($(window).width() - $(divName).width()) / 2;
             var scrollTop = $(document).scrollTop() || 0;
@@ -81,7 +38,11 @@
                 'top': top + scrollTop,
                 'left': left + scrollLeft,
                 'visibility': 'visible'
-            }).show();
+            });
+
+	    $(container).append(divName);
+
+	    return divName;
         },
         getPageSize: function() {
             var xScroll, yScroll;
@@ -130,5 +91,73 @@
             return arrayPageSize;
         }
 
+    };
+
+    var tipElement,timer;
+    $.toast = function(info, options, callback) {
+
+        var opts = $.extend({}, $.toast.defaults, options);
+
+        func.showOverlay(0);
+
+        if (typeof info == "string") {
+            _str = info
+            info = {};
+            info.title = _str;
+            info.content = "";
+        }
+        var tipEl = $('<div id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;padding:' + opts.padding + 'px"><h3>' + info.title + '</h3><p>' + info.content + '</p></div>').appendTo('body');
+
+        
+        if (opts.time != 0) {
+        timer = setTimeout(function() {
+                func.showOverlay(1);
+                tipEl.remove();
+		callback();
+            }, opts.time);
+        }
+
+	tipElement = func.centershow(tipEl);
     }
-}));
+
+
+     $.toast.close = function() {
+	$(tipElement).remove();
+	clearTimeout(timer);
+        func.showOverlay(1);
+    };
+  
+
+    //Centershow Control
+
+    var centerElement;
+
+    $.toast.centershow = function(el,container) {
+	var container = container || document.body;
+        centerElement  = func.centershow($(el),container);
+        func.showOverlay(0);
+    };
+
+    $.toast.centershow.close = function(){
+   	$(centerElement).remove();
+        func.showOverlay(1);	
+    }
+
+
+    //Overlay Control
+    $.toast.overlay = {
+	    show :  func.showOverlay(0),
+	    hide :  func.showOverlay(1) 
+    };
+
+    //Default value
+    $.toast.defaults = {
+        time: 2000,
+        width: 'auto',
+        height: 'auto',
+        font_size: 14,
+        padding: 15
+    };
+
+
+ }));

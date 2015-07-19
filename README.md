@@ -19,6 +19,8 @@ $.toast(
 	height:100,
 	padding:15,
 	font_size: 14
+},function(){
+	console.log('i m callback');
 });
 ``` 
 
@@ -30,6 +32,13 @@ $.toast(
 	content:'Here is content'
 });
 ```
+
+
+###Close Toast
+```javascript 
+$.toast.close();
+```
+
 
 ###Default Config
 ```javascript  
@@ -45,12 +54,14 @@ $.toast.defaults={
 
 ###Center Show
 ```javascript 
-$.toast.centershow('.popbox');
+$.toast.centershow('<div class="popbox">mybox</div>');
 ```
-###Close Toast
+
+###Close Center Show
 ```javascript 
-$.toast.close();
+$.toast.centershow.close();
 ```
+
 
 
 
