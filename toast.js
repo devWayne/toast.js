@@ -113,7 +113,7 @@
         timer = setTimeout(function() {
                 func.showOverlay(1);
                 tipEl.remove();
-		callback();
+				callback && callback();
             }, opts.time);
         }
 
