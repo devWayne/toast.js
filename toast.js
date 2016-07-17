@@ -1,4 +1,5 @@
-;(function(factory) {
+;
+(function(factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
         define(['$'], factory);
@@ -28,8 +29,8 @@
             }
 
         },
-        centershow: function(divName,container) {
-	    $(container).append(divName);
+        centershow: function(divName, container) {
+            $(container).append(divName);
             var top = ($(window).height() - $(divName).height()) / 2;
             var left = ($(window).width() - $(divName).width()) / 2;
             var scrollTop = $(document).scrollTop() || 0;
@@ -42,10 +43,10 @@
             });
 
 
-	    return divName;
+            return divName;
         },
         getPageSize: function() {
-            var xScroll, yScroll;
+            var xScroll, yScroll, pageHeight, pageWidth, arrayPageSize;
             if (window.innerHeight && window.scrollMaxY) {
                 xScroll = window.innerWidth + window.scrollMaxX;
                 yScroll = window.innerHeight + window.scrollMaxY;
@@ -93,7 +94,7 @@
 
     };
 
-    var tipElement,timer;
+    var tipElement, timer;
     $.toast = function(info, options, callback) {
 
         var opts = $.extend({}, $.toast.defaults, options);
@@ -101,53 +102,53 @@
         func.showOverlay(0);
 
         if (typeof info == "string") {
-            _str = info
+            var _str = info
             info = {};
             info.title = _str;
             info.content = "";
         }
         var tipEl = $('<div id="J_content" style="font-size:' + opts.font_size + 'px;text-align:center;vertical-align:middle;background-color:rgba(0,0,0,1);z-index:1000;position:fixed;width:' + opts.width + 'px;height:' + opts.height + 'px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#fff;line-height:' + opts.height + 'px;padding:' + opts.padding + 'px"><h3>' + info.title + '</h3><p>' + info.content + '</p></div>').appendTo('body');
 
-        
+
         if (opts.time != 0) {
-        timer = setTimeout(function() {
+            timer = setTimeout(function() {
                 func.showOverlay(1);
                 tipEl.remove();
-				callback && callback();
+                callback && callback();
             }, opts.time);
         }
 
-	tipElement = func.centershow(tipEl);
+        tipElement = func.centershow(tipEl);
     }
 
 
-     $.toast.close = function() {
-	$(tipElement).remove();
-	clearTimeout(timer);
+    $.toast.close = function() {
+        $(tipElement).remove();
+        clearTimeout(timer);
         func.showOverlay(1);
     };
-  
+
 
     //Centershow Control
 
     var centerElement;
 
-    $.toast.centershow = function(el,container) {
-	var container = container || document.body;
-        centerElement  = func.centershow($(el),container);
+    $.toast.centershow = function(el, container) {
+        var container = container || document.body;
+        centerElement = func.centershow($(el), container);
         func.showOverlay(0);
     };
 
-    $.toast.centershow.close = function(){
-   	$(centerElement).remove();
-        func.showOverlay(1);	
+    $.toast.centershow.close = function() {
+        $(centerElement).remove();
+        func.showOverlay(1);
     }
 
 
     //Overlay Control
     $.toast.overlay = {
-	    show :  func.showOverlay(0),
-	    hide :  func.showOverlay(1) 
+        show: func.showOverlay(0),
+        hide: func.showOverlay(1)
     };
 
     //Default value
@@ -159,5 +160,4 @@
         padding: 15
     };
 
-
- }));
+}));
